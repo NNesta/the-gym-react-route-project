@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import vans from "./pages/vans";
+import Vans from "./pages/Vans";
+import VanDetail from "./pages/VanDetail";
 import "./server";
 
 function App() {
@@ -12,13 +13,14 @@ function App() {
           #VanLife
         </Link>
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/vans">Vans</Link>
           <Link to="/about">About</Link>
         </nav>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/vans" element={<vans />} />
+        <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanDetail />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
