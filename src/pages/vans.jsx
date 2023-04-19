@@ -9,7 +9,7 @@ const Vans = () => {
         <div>{error}</div>
       ) : (
         <div className="van-list-container">
-          <h1>Explore our vans options 🚐</h1>
+          <h1>Explore our vans List options 🚐</h1>
           <ul className="van-list">
             {!isLoading &&
               data?.length &&
