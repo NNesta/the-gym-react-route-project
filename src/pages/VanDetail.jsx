@@ -9,7 +9,7 @@ const VanDetail = () => {
     <div className="van-detail-container">
       {!isLoading && van ? (
         <div className="van-detail">
-          <img src={van.imageUrl} />
+          <img alt="van" src={van.imageUrl} />
           <i className={`van-type ${van.type} selected`}>{van.type}</i>
           <h2>{van.name}</h2>
           <p className="van-price">

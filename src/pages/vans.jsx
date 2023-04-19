@@ -16,7 +16,7 @@ const Vans = () => {
               data.map((van) => (
                 <li key={van.id}>
                   <Link to={`/vans/${van.id}`} className="van-tile">
-                    <img src={van.imageUrl} alt="" />
+                    <img src={van.imageUrl} alt="van" />
                     <div className="van-info">
                       <h3>{van.name}</h3>
                       <p>
