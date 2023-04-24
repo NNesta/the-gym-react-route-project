@@ -8,19 +8,21 @@ import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
 import HostLayout from "./components/HostLayout";
+import HostVans from "./pages/host/Vans";
 import "./server";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="" element={<Home />} />
+        <Route path="" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
           <Route path="about" element={<About />} />
           <Route path="host" element={<HostLayout />}>
-            <Route path="host" element={<Dashboard />} />
+            <Route index element={<Dashboard />} />
+            <Route path="vans" element={<HostVans />} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
