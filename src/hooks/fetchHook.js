@@ -11,8 +11,10 @@ const useFetchHook = (route) => {
         const response = await fetch(route);
         const data = await response.json();
         setData(data.vans);
+        setError(null);
       } catch (errorResponse) {
         setError(errorResponse.message);
+        setData(null);
       } finally {
         setIsLoading(false);
       }

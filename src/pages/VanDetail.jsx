@@ -4,7 +4,6 @@ import useFetchHook from "../hooks/fetchHook";
 const VanDetail = () => {
   const { id } = useParams();
   const { data: van, isLoading } = useFetchHook(`/api/vans/${id}`);
-  console.log(van, isLoading);
   return (
     <div className="van-detail-container">
       {!isLoading && van ? (
