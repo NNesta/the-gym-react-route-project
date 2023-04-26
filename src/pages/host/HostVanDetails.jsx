@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { Link, useParams, Outlet, NavLink } from "react-router-dom";
+import useFetchHook from "../../hooks/fetchHook";
 
 const activeStyles = {
   "font-weight": "bold",
@@ -8,14 +8,9 @@ const activeStyles = {
 };
 
 const HostVanDetails = () => {
-  const [currentVan, setCurrentVan] = useState(null);
   const { id } = useParams();
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans));
-  }, [id]);
-  if (!currentVan) {
+  const { data: currentVan, isLoading } = useFetchHook(`/api/host/vans/${id}`);
+  if (isLoading) {
     return <h1>Loading....</h1>;
   }
   return (
