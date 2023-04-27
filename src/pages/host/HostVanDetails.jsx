@@ -9,9 +9,7 @@ const activeStyles = {
 
 const HostVanDetails = () => {
   const { id } = useParams();
-  // const obj = useFetchHook(`/api/host/vans/${id}`);
   const { data: currentVan, isLoading } = useFetchHook(`/api/host/vans/${id}`);
-  // console.log({ obj });
   if (isLoading) {
     return <h1>Loading....</h1>;
   }

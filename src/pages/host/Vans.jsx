@@ -3,7 +3,6 @@ import useFetchHook from "../../hooks/fetchHook";
 
 export default function HostVans() {
   const { data: vans, isLoading } = useFetchHook("/api/host/vans");
-  console.log({ vans });
   const hostVansEls = vans?.map((van) => (
     <Link
       to={`/host/vans/${van.id}`}
