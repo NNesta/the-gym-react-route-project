@@ -1,9 +1,13 @@
-import useFetchHook from "../../hooks/fetchHook";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../../api";
+
+const loader = () => {
+  return getHostVans();
+};
 
 const HostVans = () => {
-  const { data: vans } = useFetchHook("/api/host/vans");
-  const hostVansEls = vans?.map((van) => (
+  const vans = useLoaderData();
+  const hostVansEls = vans.map((van) => (
     <Link to={van.id} key={van.id} className="host-van-link-wrapper">
       <div className="host-van-single" key={van.id}>
         <img src={van.imageUrl} alt={van.name} />
@@ -28,4 +32,6 @@ const HostVans = () => {
     </section>
   );
 };
+
+export { loader };
 export default HostVans;
