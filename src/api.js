@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable no-throw-literal */
+=======
+>>>>>>> 9ce7b04 (adding actions in form)
 export async function getVans(id) {
   const url = id ? `/api/vans/${id}` : "/api/vans";
   const res = await fetch(url);
