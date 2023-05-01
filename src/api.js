@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* eslint-disable no-throw-literal */
 =======
 >>>>>>> 9ce7b04 (adding actions in form)
+=======
+// eslint-disable-no-throw-literal
+>>>>>>> 826c1fe (feat: putting the redirect to query params)
 export async function getVans(id) {
   const url = id ? `/api/vans/${id}` : "/api/vans";
   const res = await fetch(url);
