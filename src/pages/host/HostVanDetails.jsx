@@ -1,12 +1,14 @@
 import { Link, Outlet, NavLink, useLoaderData } from "react-router-dom";
 import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
 
 const activeStyles = {
   "font-weight": "bold",
   textDecoration: "underline",
   color: "#161616",
 };
-const loader = ({ params }) => {
+const loader = async ({ params, request }) => {
+  await requireAuth(request);
   return getHostVans(params.id);
 };
 
