@@ -1,3 +1,4 @@
+// eslint-disable-no-throw-literal
 export async function getVans(id) {
   const url = id ? `/api/vans/${id}` : "/api/vans";
   const res = await fetch(url);

@@ -7,6 +7,9 @@ const Header = () => {
     "text-decoration": "underline",
     color: "#161616",
   };
+  const fakeLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+  };
   return (
     <div>
       <header>
@@ -33,8 +36,11 @@ const Header = () => {
             About
           </NavLink>
           <Link to="login" className="login-link">
-            <img src={avatarImg} className="login-icon" />
+            <img alt="img" src={avatarImg} className="login-icon" />
           </Link>
+          {localStorage.getItem("isLoggedIn") && (
+            <button onClick={fakeLogout}>X</button>
+          )}
         </nav>
       </header>
     </div>
