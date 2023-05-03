@@ -16,7 +16,6 @@ const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const renderVansElements = (loadedVans) => {
-    console.log({ loadedVans });
     const displayedVans = typeFilter
       ? loadedVans?.filter(
           (van) => van.type.toLowerCase() === typeFilter.toLowerCase()

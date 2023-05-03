@@ -10,8 +10,6 @@ const loader = async ({ request }) => {
 
 const HostVans = () => {
   const loadedVans = useLoaderData();
-  console.log({ loadedVans });
-
   return (
     <section>
       <h1 className="host-vans-title">Your listed vans</h1>
@@ -19,7 +17,6 @@ const HostVans = () => {
         <Suspense fallback={<h2>Loading hosted vans...</h2>}>
           <Await resolve={loadedVans.hostVans}>
             {(vans) => {
-              console.log({ vans });
               return vans.length > 0 ? (
                 <section>
                   {vans.map((van) => (
