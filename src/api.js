@@ -1,4 +1,4 @@
-export async function getVans() {
+const getVans = async () => {
   const res = await fetch("/api/vans");
   if (!res.ok) {
     throw {
@@ -9,4 +9,5 @@ export async function getVans() {
   }
   const data = await res.json();
   return data.vans;
-}
+};
+export { getVans };
