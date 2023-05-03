@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 const getVans = async () => {
   const res = await fetch("/api/vans");
   if (!res.ok) {
