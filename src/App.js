@@ -9,7 +9,7 @@ import About from "./pages/About";
 import Vans, { loader as vansLoader } from "./pages/vans/Vans";
 import VanDetail, { loader as vanDetailLoader } from "./pages/vans/VanDetail";
 import Layout from "./components/Layout";
-import Dashboard from "./pages/host/Dashboard";
+import Dashboard, { loader as dashboardLoader } from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
 import HostLayout from "./components/HostLayout";
@@ -34,10 +34,16 @@ const App = () => {
     createRoutesFromElements(
       <Route path="" element={<Layout />} errorElement={<Error />}>
         <Route index element={<Home />} />
-        <Route path="vans" element={<Vans />} loader={vansLoader} />
+        <Route
+          path="vans"
+          element={<Vans />}
+          errorElement={<Error />}
+          loader={vansLoader}
+        />
         <Route
           path="vans/:id"
           element={<VanDetail />}
+          errorElement={<Error />}
           loader={vanDetailLoader}
         />
         <Route
@@ -48,13 +54,16 @@ const App = () => {
         />
         <Route path="about" element={<About />} />
         <Route path="host" element={<HostLayout />}>
+          <Route index element={<Dashboard />} loader={dashboardLoader} />
+
           <Route
-            index
-            element={<Dashboard />}
-            loader={async ({ request }) => await requireAuth(request)}
+            path="vans"
+            element={<HostVans />}
+            loader={hostVansLoader}
+            errorElement={<Error />}
           />
-          <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
           <Route
+            errorElement={<Error />}
             loader={HostVanDetailsLoader}
             path="vans/:id"
             element={<HostVanDetails />}
@@ -80,11 +89,6 @@ const App = () => {
             element={<Income />}
             loader={async ({ request }) => await requireAuth(request)}
           />
-          {/* <Route
-            path="reviews"
-            element={<Reviews />}
-            loader={async ({request}) => await requireAuth(request)}
-          /> */}
           <Route
             path="reviews"
             element={<Reviews />}
