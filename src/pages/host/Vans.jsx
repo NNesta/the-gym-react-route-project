@@ -1,7 +1,7 @@
 import useFetchHook from "../../hooks/fetchHook";
 import { Link } from "react-router-dom";
 
-export default function HostVans() {
+const HostVans = () => {
   const { data: vans } = useFetchHook("/api/host/vans");
   const hostVansEls = vans?.map((van) => (
     <Link to={van.id} key={van.id} className="host-van-link-wrapper">
@@ -27,4 +27,5 @@ export default function HostVans() {
       </div>
     </section>
   );
-}
+};
+export default HostVans;
