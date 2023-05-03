@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function HostVans() {
+const HostVans = () => {
   const [vans, setVans] = useState([]);
 
   useEffect(() => {
@@ -34,4 +34,6 @@ export default function HostVans() {
       </div>
     </section>
   );
-}
+};
+
+export default HostVans;

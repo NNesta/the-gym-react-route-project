@@ -1,6 +1,6 @@
-import useFetchHook from "../../hooks/fetchHook";
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import { getVans } from "../../api";
+
 export const loader = () => {
   return getVans();
 };
