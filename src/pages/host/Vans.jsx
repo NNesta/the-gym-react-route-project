@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const HostVans = () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
   const { data: vans } = useFetchHook("/api/host/vans");
   const hostVansEls = vans?.map((van) => (
 =======
+=======
+>>>>>>> 0ea7a31b150f8db1f6be457f6c8a44e18f8856b1
   const [vans, setVans] = useState([]);
 
   useEffect(() => {
@@ -41,7 +44,11 @@ const HostVans = () => {
   );
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> e40f82e (feat: changing literal function declation with arrow function)
+=======
+
+>>>>>>> 0ea7a31b150f8db1f6be457f6c8a44e18f8856b1
 export default HostVans;
