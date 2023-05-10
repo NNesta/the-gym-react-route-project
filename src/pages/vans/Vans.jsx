@@ -11,11 +11,6 @@ const Vans = () => {
   const displayedVans = typeFilter
     ? vans?.filter((van) => van.type.toLowerCase() === typeFilter.toLowerCase())
     : vans;
-
-  // if (error) {
-  //   return <h1>There was an error: {error.message}</h1>;
-  // }
-
   return (
     <div>
       {false ? (
