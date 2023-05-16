@@ -4,6 +4,7 @@ import { requireAuth } from "../../utils";
 
 const loader = async ({ request }) => {
   await requireAuth(request);
+
   return getHostVans();
 };
 

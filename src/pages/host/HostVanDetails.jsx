@@ -14,6 +14,7 @@ const loader = async ({ params, request }) => {
 
 const HostVanDetails = () => {
   const currentVan = useLoaderData();
+
   return (
     <section>
       <Link to="/host/vans" relative="path" className="back-button">

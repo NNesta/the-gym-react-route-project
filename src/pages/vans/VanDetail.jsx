@@ -10,6 +10,7 @@ const VanDetail = () => {
   const search = location.state?.search || "";
   const type = location.state?.type || "all";
   const van = useLoaderData();
+
   return (
     <div className="van-detail-container">
       <Link to={`..${search}`} relative="path" className="back-button">

@@ -8,12 +8,14 @@ import {
 
 const loader = ({ request }) => {
   const message = new URL(request.url).searchParams.get("message");
+
   return message;
 };
 async function fakeLoginUser(creds) {
   await new Promise((done) => setTimeout(() => done(), 1000));
   if (creds.email === "b@b.com" && creds.password === "p123") {
     localStorage.setItem("loggedin", true);
+
     return {
       email: creds.email,
       token: "1234567890abcdef",
@@ -30,6 +32,7 @@ const action = async ({ request }) => {
   try {
     await fakeLoginUser({ email, password });
     localStorage.setItem("isLoggedIn", true);
+
     return redirect(pathname);
   } catch (error) {
     return error.message;
@@ -40,6 +43,7 @@ const Login = () => {
   const message = useLoaderData();
   const error = useActionData();
   const navigation = useNavigation();
+
   return (
     <div className="login-container">
       <h2 className="red">{message}</h2>

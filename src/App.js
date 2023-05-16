@@ -47,49 +47,28 @@ const App = () => {
           action={loginAction}
         />
         <Route path="about" element={<About />} />
-        <Route path="host" element={<HostLayout />}>
-          <Route
-            index
-            element={<Dashboard />}
-            loader={async ({ request }) => await requireAuth(request)}
-          />
+        <Route
+          path="host"
+          element={<HostLayout />}
+          loader={async ({ request }) => await requireAuth(request)}
+        >
+          <Route index element={<Dashboard />} />
           <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
           <Route
             loader={HostVanDetailsLoader}
             path="vans/:id"
             element={<HostVanDetails />}
           >
-            <Route
-              index
-              element={<HostVanInfo />}
-              loader={async ({ request }) => await requireAuth(request)}
-            />
-            <Route
-              path="pricing"
-              element={<HostVanPricing />}
-              loader={async ({ request }) => await requireAuth(request)}
-            />
-            <Route
-              path="photos"
-              element={<HostVanPhotos />}
-              loader={async ({ request }) => await requireAuth(request)}
-            />
+            <Route index element={<HostVanInfo />} />
+            <Route path="pricing" element={<HostVanPricing />} />
+            <Route path="photos" element={<HostVanPhotos />} />
           </Route>
-          <Route
-            path="income"
-            element={<Income />}
-            loader={async ({ request }) => await requireAuth(request)}
-          />
+          <Route path="income" element={<Income />} />
           {/* <Route
             path="reviews"
             element={<Reviews />}
-            loader={async ({request}) => await requireAuth(request)}
           /> */}
-          <Route
-            path="reviews"
-            element={<Reviews />}
-            loader={async ({ request }) => await requireAuth(request)}
-          />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

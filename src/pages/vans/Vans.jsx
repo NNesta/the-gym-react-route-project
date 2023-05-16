@@ -11,6 +11,7 @@ const Vans = () => {
   const displayedVans = typeFilter
     ? vans?.filter((van) => van.type.toLowerCase() === typeFilter.toLowerCase())
     : vans;
+
   return (
     <div>
       {false ? (
