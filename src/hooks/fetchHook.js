@@ -19,6 +19,7 @@ const useFetchHook = (route) => {
     };
     fetchData();
   }, [route]);
+
   return { data, error, isLoading };
 };
 export default useFetchHook;

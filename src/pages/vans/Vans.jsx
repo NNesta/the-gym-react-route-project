@@ -1,24 +1,21 @@
-import useFetchHook from "../../hooks/fetchHook";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
+export const loader = () => {
+  return getVans();
+};
 
 const Vans = () => {
-  const { data: vans, error, isLoading } = useFetchHook("/api/vans");
+  const vans = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const displayedVans = typeFilter
     ? vans?.filter((van) => van.type.toLowerCase() === typeFilter.toLowerCase())
     : vans;
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-  if (error) {
-    return <h1>There was an error: {error.message}</h1>;
-  }
 
   return (
     <div>
-      {error ? (
-        <div>{error}</div>
+      {false ? (
+        <div>{"error"}</div>
       ) : (
         <div className="van-list-container">
           <h1>Explore our vans options 🚐</h1>
@@ -57,31 +54,28 @@ const Vans = () => {
             )}
           </div>
           <ul className="van-list">
-            {!isLoading &&
-              displayedVans?.map((van) => (
-                <li key={van.id}>
-                  <Link
-                    to={van.id}
-                    state={{
-                      search: `?${searchParams.toString()}`,
-                      type: typeFilter,
-                    }}
-                    className="van-tile"
-                  >
-                    <img src={van.imageUrl} alt="" />
-                    <div className="van-info">
-                      <h3>{van.name}</h3>
-                      <p>
-                        ${van.price}
-                        <span>/day</span>
-                      </p>
-                    </div>
-                    <i className={`van-type ${van.type} selected`}>
-                      {van.type}
-                    </i>
-                  </Link>
-                </li>
-              ))}
+            {displayedVans?.map((van) => (
+              <li key={van.id}>
+                <Link
+                  to={van.id}
+                  state={{
+                    search: `?${searchParams.toString()}`,
+                    type: typeFilter,
+                  }}
+                  className="van-tile"
+                >
+                  <img src={van.imageUrl} alt="" />
+                  <div className="van-info">
+                    <h3>{van.name}</h3>
+                    <p>
+                      ${van.price}
+                      <span>/day</span>
+                    </p>
+                  </div>
+                  <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       )}
