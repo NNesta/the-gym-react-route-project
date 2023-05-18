@@ -13,7 +13,7 @@ import Dashboard, { loader as dashboardLoader } from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
 import HostLayout from "./components/HostLayout";
-import HostVans, { loader as hostVansLoader } from "./pages/host/Vans";
+import HostVans, { loader as hostVansLoader } from "./pages/host/vans";
 import HostVanDetails, {
   loader as HostVanDetailsLoader,
 } from "./pages/host/HostVanDetails";
@@ -32,7 +32,7 @@ import { requireAuth } from "./utils";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="" element={<Layout />} errorElement={<Error />}>
+      <Route path="/" element={<Layout />} errorElement={<Error />}>
         <Route index element={<Home />} />
         <Route
           path="vans"

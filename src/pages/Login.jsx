@@ -24,17 +24,14 @@ async function fakeLoginUser(creds) {
 const action = async ({ request }) => {
   const pathname =
     new URL(request.url).searchParams.get("redirectTo") || "/host";
-  console.log(pathname);
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
   try {
     const data = await fakeLoginUser({ email, password });
     localStorage.setItem("isLoggedIn", true);
-    console.log({ data });
     return redirect(pathname);
   } catch (error) {
-    console.log(error.message);
     return error.message;
   }
 };
