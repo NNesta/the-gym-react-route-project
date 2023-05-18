@@ -28,7 +28,7 @@ const action = async ({ request }) => {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const data = await fakeLoginUser({ email, password });
+    await fakeLoginUser({ email, password });
     localStorage.setItem("isLoggedIn", true);
     return redirect(pathname);
   } catch (error) {
