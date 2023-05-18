@@ -26,7 +26,6 @@ import Login, {
 } from "./pages/Login";
 import NotFound from "./pages/404";
 import Error from "./components/Error";
-import "./server";
 import { requireAuth } from "./utils";
 
 const App = () => {

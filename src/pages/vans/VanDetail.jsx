@@ -1,7 +1,7 @@
 import { Link, useLocation, useLoaderData } from "react-router-dom";
 import { getVan } from "../../api";
 
-const loader = ({ params }) => {
+export const loader = ({ params }) => {
   return getVan(params.id);
 };
 
@@ -30,5 +30,4 @@ const VanDetail = () => {
   );
 };
 
-export { loader };
 export default VanDetail;

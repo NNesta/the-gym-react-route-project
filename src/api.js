@@ -22,6 +22,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 const vansCollectionRef = collection(db, "vans");
+const usersCollectionRef = collection(db, "users");
 
 const getVans = async () => {
   const querySnapshot = await getDocs(vansCollectionRef);
@@ -49,10 +50,18 @@ const getHostVans = async () => {
 };
 
 export async function loginUser(creds) {
-  const userRef = doc(db, "user", ...creds);
-  const userSnapshot = await getDoc(userRef);
-  const userData = userSnapshot.data();
-  return userData;
+  console.log({ creds });
+  const q = query(
+    usersCollectionRef,
+    where("email", "==", creds.email),
+    where("password", "==", creds.password)
+  );
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.docs.length) {
+    const data = querySnapshot.docs[0].data();
+    localStorage.setItem("isLoggedIn", true);
+    return data;
+  } else return null;
 }
 
 export { getVans, getVan, getHostVans };

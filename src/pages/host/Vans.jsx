@@ -3,7 +3,7 @@ import { Link, useLoaderData, defer, Await } from "react-router-dom";
 import { getHostVans } from "../../api";
 import { requireAuth } from "../../utils";
 
-const loader = async ({ request }) => {
+export const loader = async ({ request }) => {
   await requireAuth(request);
   return defer({ hostVans: getHostVans() });
 };
@@ -46,5 +46,4 @@ const HostVans = () => {
   );
 };
 
-export { loader };
 export default HostVans;

@@ -5,33 +5,31 @@ import {
   redirect,
   useActionData,
 } from "react-router-dom";
+import { loginUser } from "../api";
 
-const loader = ({ request }) => {
+export const loader = ({ request }) => {
   const message = new URL(request.url).searchParams.get("message");
   return message;
 };
 async function fakeLoginUser(creds) {
-  await new Promise((done) => setTimeout(() => done(), 1000));
-  if (creds.email === "b@b.com" && creds.password === "p123") {
-    localStorage.setItem("loggedin", true);
-    return {
-      email: creds.email,
-      token: "1234567890abcdef",
-    };
-  }
-  throw new Error("Couldn't log the user in");
+  const res = await loginUser(creds);
+  return res;
 }
-const action = async ({ request }) => {
+export const action = async ({ request }) => {
   const pathname =
     new URL(request.url).searchParams.get("redirectTo") || "/host";
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    await fakeLoginUser({ email, password });
-    localStorage.setItem("isLoggedIn", true);
-    return redirect(pathname);
+    const res = await fakeLoginUser({ email, password });
+    if (!res) {
+      throw new Error("Invalid credential");
+    } else {
+      return redirect(pathname);
+    }
   } catch (error) {
+    console.log({ error: error.message });
     return error.message;
   }
 };
@@ -55,5 +53,4 @@ const Login = () => {
     </div>
   );
 };
-export { loader, action };
 export default Login;

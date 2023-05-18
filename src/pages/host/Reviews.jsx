@@ -1,4 +1,3 @@
-import React from "react";
 import { BsStarFill } from "react-icons/bs";
 import ReviewImage from "../../assets/images/reviews-graph.png";
 

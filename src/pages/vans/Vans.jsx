@@ -7,7 +7,7 @@ import {
   Await,
 } from "react-router-dom";
 import { getVans } from "../../api";
-const loader = () => {
+export const loader = () => {
   return defer({ vans: getVans() });
 };
 
@@ -87,19 +87,14 @@ const Vans = () => {
 
   return (
     <div>
-      {false ? (
-        <div>{"error"}</div>
-      ) : (
-        <div className="van-list-container">
-          <h1>Explore our vans options 🚐</h1>
-          <Suspense fallback={<h2>Loading vans...</h2>}>
-            <Await resolve={loadedData.vans}>{renderVansElements}</Await>
-          </Suspense>
-        </div>
-      )}
+      <div className="van-list-container">
+        <h1>Explore our vans options 🚐</h1>
+        <Suspense fallback={<h2>Loading vans...</h2>}>
+          <Await resolve={loadedData.vans}>{renderVansElements}</Await>
+        </Suspense>
+      </div>
     </div>
   );
 };
 
 export default Vans;
-export { loader };

@@ -15,7 +15,7 @@ const activeStyles = {
   textDecoration: "underline",
   color: "#161616",
 };
-const loader = async ({ params, request }) => {
+export const loader = async ({ params, request }) => {
   await requireAuth(request);
   return defer({ van: getVan(params.id) });
 };
@@ -73,5 +73,4 @@ const HostVanDetails = () => {
   );
 };
 
-export { loader };
 export default HostVanDetails;
