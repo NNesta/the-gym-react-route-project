@@ -8,18 +8,18 @@ import {
   query,
   where,
 } from "firebase/firestore/lite";
-
+console.log(process.env);
 const firebaseConfig = {
-  apiKey: "AIzaSyCrkG5vK6jk2OgRV86OyErQL8NQhgoBIRQ",
-  authDomain: "vanlife-5fa50.firebaseapp.com",
-  projectId: "vanlife-5fa50",
-  storageBucket: "vanlife-5fa50.appspot.com",
-  messagingSenderId: "685123767110",
-  appId: "1:685123767110:web:7934f183829dc3a2bc3347",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 const app = initializeApp(firebaseConfig);
-
+// process.env
 const db = getFirestore(app);
 const vansCollectionRef = collection(db, "vans");
 const usersCollectionRef = collection(db, "users");
