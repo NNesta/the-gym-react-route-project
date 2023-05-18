@@ -13,7 +13,7 @@ import Dashboard, { loader as dashboardLoader } from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
 import HostLayout from "./components/HostLayout";
-import HostVans, { loader as hostVansLoader } from "./pages/host/vans";
+import HostVans, { loader as hostVansLoader } from "./pages/host/Vans";
 import HostVanDetails, {
   loader as HostVanDetailsLoader,
 } from "./pages/host/HostVanDetails";
